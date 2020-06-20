@@ -44,8 +44,9 @@ for line in fh:
             print("mask 000ᵒ00'00.00\" -->", "{0}ᵒ{1}'{2}.{3}\"".format(angler, minute, sec, "00"))
 
         print("           radians -->", '%.2f' % radians)
-        GD_i = str(GD).find(".")
-        print("                GD -->", "{0}-{1}".format(int(GD), str(GD)[GD_i + 1:GD_i + 3:]))
+        GD_i = str(round(GD, 2))
+        GD_i = GD_i.replace(".", "-")
+        print("                GD -->", GD_i)
 
     if "-" in line_r:
         # float from GD
