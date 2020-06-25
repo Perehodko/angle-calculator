@@ -6,6 +6,8 @@ if len(fname) < 1: fname = "test_sum.txt"
 fh = open(fname)
 store_list = []
 count = 0
+global angler, minute, sec
+
 for line in fh:
     line_r = line.rstrip()
     if not line_r.isspace():
@@ -46,17 +48,24 @@ for line in fh:
         # min
         min_tenth = sum_ang - ang
         min = min_tenth * 60
-        if min >= 60:
-            ang += 1
-            min -= 60
+
         # sec
         sec_tenth = min - int(min)
         sec = sec_tenth * 60
         if sec >= 60:
             min += 1
             sec -= 60
-        if sum_ang >= 360:
+
+        if min >= 60:
+            sum_ang += 1
+            min -= 60
+
+        # if sum_ang >= 360:
+        #     sum_ang -= 360
+
+        while sum_ang >= 360:
             sum_ang -= 360
+
 
         # radians
         radians = (float(sum_ang) * math.pi) / 180
@@ -65,10 +74,13 @@ for line in fh:
         GD = float(sum_ang) / 6
 
         print("-" * 35, sep='\n')
-        print("sum", "{0}ᵒ{1}'{2}\"".format(int(sum_ang), int(min), round(sec)))
+        if "." in minute:
+            print("sum", "{0}ᵒ{1}'".format(int(sum_ang), round(min, 2)))
+        else:
+            print("sum", "{0}ᵒ{1}'{2}\"".format(int(sum_ang), int(min), round(sec)))
         print("-" * 35, sep='\n')
         print("            degree -->", '%.5f' % sum_ang)
-        print("   mask 000ᵒ00'00\" -->", "{0}ᵒ{1}'{2}\"".format(int(sum_ang), int(min), int(float(sec))))
+        print("   mask 000ᵒ00'00\" -->", "{0}ᵒ{1}'{2}\"".format(int(sum_ang), int(min), round(float(sec))))
         print("   mask 000ᵒ00.00' -->", "{0}ᵒ{1}'".format(int(sum_ang), round(min, 2)))
         print("           radians -->", '%.2f' % radians)
         print("                GD -->", (str(round(GD, 2)).replace(".", '-')))
@@ -113,3 +125,4 @@ for line in fh:
         print("                GD -->", (str(round(sum_ang_GD, 2)).replace(".", '-')))
         print("-" * 35, sep='\n')
         print("\n")
+
