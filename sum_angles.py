@@ -74,7 +74,9 @@ for line in fh:
         GD = float(sum_ang) / 6
 
         print("-" * 35, sep='\n')
-        if "." in minute:
+        if "." in angler:
+            print("sum", '%.5f' % sum_ang)
+        elif "." in minute:
             print("sum", "{0}ᵒ{1}'".format(int(sum_ang), round(min, 2)))
         else:
             print("sum", "{0}ᵒ{1}'{2}\"".format(int(sum_ang), int(min), round(sec)))
