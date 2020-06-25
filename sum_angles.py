@@ -80,7 +80,7 @@ for line in fh:
         sum_ang = store_list[0]+store_list[1]
         if sum_ang >= 360:
             sum_ang -= 360
-        sum_ang = sum_ang / 6
+        sum_ang_GD = sum_ang / 6
         store_list = []
         count = 0
         # float минуты
@@ -107,13 +107,13 @@ for line in fh:
 
         print("-" * 35, sep='\n')
         # print("original str:", line_r)
-        print("sum", (str(round(sum_ang, 2)).replace(".", '-')))
+        print("sum", (str(round(sum_ang_GD, 2)).replace(".", '-')))
         print("-" * 35)
         print("            degree -->", '%.5f' % sum_ang)
-        print("   mask 000ᵒ00'00\" -->", "{0}ᵒ{1}'{2}\"".format(int(sum_ang), int_min_GD, int(float(sec_GD))))
+        print("   mask 000ᵒ00'00\" -->", "{0}ᵒ{1}'{2}\"".format(int(sum_ang), int_min_GD, round(float(sec_GD)),2))
         print("   mask 000ᵒ00.00' -->", "{0}ᵒ{1}'".format(int(sum_ang), round(min_sec, 2)))
         print("           radians -->", '%.2f' % radians_GD)
-        print("                GD -->", (str(round(sum_ang, 2)).replace(".", '-')))
+        print("                GD -->", (str(round(sum_ang_GD, 2)).replace(".", '-')))
         print("-" * 35, sep='\n')
         print("\n")
 

@@ -87,7 +87,7 @@ for line in fh:
             diff_ang = 360 - abs(diff_ang)
             # print(diff_ang)
 
-        diff_ang = diff_ang / 6
+        diff_ang_GD = diff_ang / 6
         store_list = []
         count = 0
         # float минуты
@@ -114,13 +114,13 @@ for line in fh:
 
         print("-" * 35, sep='\n')
         # print("original str:", line_r)
-        print("diff", (str(round(diff_ang, 2)).replace(".", '-')))
+        print("diff", (str(round(diff_ang_GD, 2)).replace(".", '-')))
         print("-" * 35)
         print("            degree -->", '%.5f' % diff_ang)
         print("   mask 000ᵒ00'00\" -->", "{0}ᵒ{1}'{2}\"".format(int(diff_ang), int_min_GD, int(float(sec_GD))))
         print("   mask 000ᵒ00.00' -->", "{0}ᵒ{1}'".format(int(diff_ang), round(min_sec, 2)))
         print("           radians -->", '%.2f' % radians_GD)
-        print("                GD -->", (str(round(diff_ang, 2)).replace(".", '-')))
+        print("                GD -->", (str(round(diff_ang_GD, 2)).replace(".", '-')))
         print("-" * 35, sep='\n')
         print("\n")
 
