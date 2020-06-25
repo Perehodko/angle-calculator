@@ -1,4 +1,5 @@
 import math
+
 fname = input("Enter file name: ")
 if len(fname) < 1: fname = "test_diff.txt"
 
@@ -10,7 +11,7 @@ for line in fh:
     if not line_r.isspace():
         print("   ", line_r)
         if count == 0:
-            print("-"*35)
+            print("-" * 35)
 
     if "ᵒ" in line_r:
         # pos ang
@@ -36,20 +37,20 @@ for line in fh:
         count += 1
 
     if count == 2 and "ᵒ" in line_r:
-        diff_ang = store_list[0]-store_list[1]
+        diff_ang = store_list[0] - store_list[1]
         store_list = []
         count = 0
 
-        #ang
+        # ang
         ang = int(diff_ang)
-        #min
+        # min
         min_tenth = diff_ang - ang
         min = min_tenth * 60
         if min > 60:
-             ang -= 1
-             min = 60 - abs(min)
+            ang -= 1
+            min = 60 - abs(min)
 
-        #sec
+        # sec
         sec_tenth = min - int(min)
         sec = sec_tenth * 60
         # if sec < 60:
@@ -57,7 +58,7 @@ for line in fh:
         #      sec = 60 - abs(sec)
 
         if diff_ang < 0:
-        # print(diff_ang)
+            # print(diff_ang)
             diff_ang = 360 - abs(diff_ang)
         if min < 0:
             min = 60 - abs(min)
@@ -81,7 +82,7 @@ for line in fh:
         print("-" * 35, sep='\n')
         print("\n")
     if count == 2 and "-" in line_r:
-        diff_ang = store_list[0]-store_list[1]
+        diff_ang = store_list[0] - store_list[1]
         # print(diff_ang)
         if diff_ang < 0:
             diff_ang = 360 - abs(diff_ang)
@@ -111,7 +112,6 @@ for line in fh:
         # radians
         radians_GD = (float(diff_ang) * math.pi) / 180
 
-
         print("-" * 35, sep='\n')
         # print("original str:", line_r)
         print("diff", (str(round(diff_ang_GD, 2)).replace(".", '-')))
@@ -123,4 +123,3 @@ for line in fh:
         print("                GD -->", (str(round(diff_ang_GD, 2)).replace(".", '-')))
         print("-" * 35, sep='\n')
         print("\n")
-

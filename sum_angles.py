@@ -11,8 +11,7 @@ for line in fh:
     if not line_r.isspace():
         print("   ", line_r)
         if count == 0:
-            print("-"*35)
-
+            print("-" * 35)
 
     if "ᵒ" in line_r:
         # pos ang
@@ -33,25 +32,24 @@ for line in fh:
         num = float(line_r.replace('-', '.'))
         angler_from_GD = num * 6
 
-
         d1 = angler_from_GD
         store_list.append(d1)
         count += 1
 
     if count == 2 and "ᵒ" in line_r:
-        sum_ang = store_list[0]+store_list[1]
+        sum_ang = store_list[0] + store_list[1]
         store_list = []
         count = 0
 
-        #ang
+        # ang
         ang = int(sum_ang)
-        #min
+        # min
         min_tenth = sum_ang - ang
         min = min_tenth * 60
         if min >= 60:
             ang += 1
             min -= 60
-        #sec
+        # sec
         sec_tenth = min - int(min)
         sec = sec_tenth * 60
         if sec >= 60:
@@ -77,7 +75,7 @@ for line in fh:
         print("-" * 35, sep='\n')
         print("\n")
     if count == 2 and "-" in line_r:
-        sum_ang = store_list[0]+store_list[1]
+        sum_ang = store_list[0] + store_list[1]
         if sum_ang >= 360:
             sum_ang -= 360
         sum_ang_GD = sum_ang / 6
@@ -104,17 +102,14 @@ for line in fh:
         # radians
         radians_GD = (float(sum_ang) * math.pi) / 180
 
-
         print("-" * 35, sep='\n')
         # print("original str:", line_r)
         print("sum", (str(round(sum_ang_GD, 2)).replace(".", '-')))
         print("-" * 35)
         print("            degree -->", '%.5f' % sum_ang)
-        print("   mask 000ᵒ00'00\" -->", "{0}ᵒ{1}'{2}\"".format(int(sum_ang), int_min_GD, round(float(sec_GD)),2))
+        print("   mask 000ᵒ00'00\" -->", "{0}ᵒ{1}'{2}\"".format(int(sum_ang), int_min_GD, round(float(sec_GD)), 2))
         print("   mask 000ᵒ00.00' -->", "{0}ᵒ{1}'".format(int(sum_ang), round(min_sec, 2)))
         print("           radians -->", '%.2f' % radians_GD)
         print("                GD -->", (str(round(sum_ang_GD, 2)).replace(".", '-')))
         print("-" * 35, sep='\n')
         print("\n")
-
-
