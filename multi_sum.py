@@ -97,7 +97,7 @@ for line in fh:
                 if "." in angler:
                     print("res", '%.5f' % sum_ang)
                 elif "." in minute:
-                    print("res", "{0}ᵒ{1}'".format(int(sum_ang), min))
+                    print("res", "{0}ᵒ{1}'".format(int(sum_ang), round(min, 2)))
                 else:
                     print("res", "{0}ᵒ{1}'{2}\"".format(int(sum_ang), int(min), round(sec)))
                 # else:
@@ -169,5 +169,5 @@ for line in fh:
                 print("   mask 000ᵒ00.00' -->", "{0}ᵒ{1}'".format(int(ang), round(min, 2)))
                 print("           radians -->", '%.2f' % radians)
                 print("                GD -->", (str(round(GD+0.0001, 2)).replace(".", '-')))
-                print("-" * 35, sep='\n')
+                print("=" * 35, sep='\n')
                 print("\n")
