@@ -1,5 +1,4 @@
 import math
-import decimal
 
 fname = input("Enter file name: ")
 if len(fname) < 1: fname = "test_data.txt"
