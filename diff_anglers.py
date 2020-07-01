@@ -72,7 +72,7 @@ for line in fh:
         GD = float(diff_ang) / 6
 
         print("-" * 35, sep='\n')
-        print("diff", "{0}ᵒ{1}'{2}\"".format(int(diff_ang), int(min), round(sec)))
+        print("diff", "{0}ᵒ{1}'{2}\"".format(int(diff_ang), int(min), int(float(sec))))
         print("-" * 35, sep='\n')
         print("            degree -->", '%.5f' % diff_ang)
         print("   mask 000ᵒ00'00\" -->", "{0}ᵒ{1}'{2}\"".format(int(diff_ang), int(min), int(float(sec))))
